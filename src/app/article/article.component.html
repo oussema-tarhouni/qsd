@@ -1,0 +1,144 @@
+<ng-container *ngIf="view() as v; else nf">
+  <div class="progress" aria-hidden="true"><i [style.transform]="'scaleX(' + progress() + ')'"></i></div>
+
+  <header class="hero">
+    <div class="bg" [style.background-image]="'url(' + v.img + ')'" [style.transform]="'translateY(' + shift() + 'px) scale(1.08)'"></div>
+    <div class="shade"></div>
+    <div class="hero-in">
+      <nav class="crumb"><a routerLink="/">Home</a> / <a [routerLink]="['/', v.tag]">{{ label(v.tag) }}</a></nav>
+      <div class="tags"><a *ngFor="let t of v.a.tags" [routerLink]="['/', t]">{{ label(t) }}</a></div>
+      <h1>{{ v.a.title }}</h1>
+      <div class="meta"><b>{{ v.a.source }}</b><span>·</span><span>{{ v.a.date }}</span></div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <article class="main">
+      <div class="ai-badge"><span class="dot"></span> AI-written article<span *ngIf="readMinutes()"> · {{ readMinutes() }} min read</span></div>
+
+      <ng-container *ngIf="brief() as b; else pending">
+        <h2 class="brief-title">{{ b.title }}</h2>
+        <p class="stand">{{ b.description }}</p>
+        <div class="body">
+          <section class="part" *ngFor="let s of b.sections" [style.--c]="meta(s.key).color" [style.--ink]="meta(s.key).ink">
+            <header class="part-h">
+              <span>{{ meta(s.key).label }}</span>
+              <small>{{ meta(s.key).hint }}</small>
+            </header>
+            <p *ngIf="s.text?.trim(); else none">{{ s.text }}</p>
+            <ng-template #none><p class="none">The source doesn't cover this.</p></ng-template>
+          </section>
+        </div>
+        <div class="conclusion">
+          <div class="lbl">Conclusion</div>
+          <p>{{ b.conclusion }}</p>
+        </div>
+      </ng-container>
+
+      <ng-template #pending>
+        <ng-container *ngIf="briefLoading(); else failed">
+          <div class="skel t"></div>
+          <div class="skel l"></div><div class="skel l"></div><div class="skel l s"></div>
+          <div class="skel h"></div><div class="skel l"></div><div class="skel l"></div><div class="skel l"></div><div class="skel l s"></div>
+          <div class="skel h"></div><div class="skel l"></div><div class="skel l"></div><div class="skel l s"></div>
+          <div class="skel c"></div>
+        </ng-container>
+        <ng-template #failed>
+          <h2 class="brief-title">{{ v.a.title }}</h2>
+          <p class="stand">{{ v.a.summary }}</p>
+          <p class="note">The AI brief isn't available right now.
+            <button type="button" class="retry" (click)="loadBrief(v.a, true)">Try again</button></p>
+        </ng-template>
+      </ng-template>
+
+      <section class="ask-inline" aria-label="Ask AI about this story">
+        <h2>Got a question about this story?</h2>
+        <div class="chips">
+          <button type="button" class="chip" *ngFor="let s of suggestions()" (click)="openAsk(s)">{{ s }}</button>
+        </div>
+        <button type="button" class="ask-open" (click)="openAsk()">
+          <span>Ask anything about this story</span>
+          <kbd>/</kbd>
+        </button>
+      </section>
+
+      <p class="note">This is a short brief based on the source's published reporting. Open the original for the full story.</p>
+      <a class="src" [href]="v.a.url" target="_blank" rel="noopener">Read the full story at {{ v.a.source }} →</a>
+    </article>
+
+    <aside class="side">
+      <div class="box">
+        <div class="lbl">Source</div>
+        <div class="sname">{{ v.a.source }}</div>
+        <div class="sdate">{{ v.a.date }}</div>
+        <button type="button" class="btn" (click)="copy()">{{ copied() ? 'Link copied ✓' : 'Copy link' }}</button>
+      </div>
+      <div class="box">
+        <div class="lbl">Share this story</div>
+        <div class="share">
+          <button type="button" *ngFor="let n of networks" [class]="'sh ' + n.id" (click)="share(n.id)">
+            <svg *ngIf="n.id === 'x'" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <svg *ngIf="n.id === 'instagram'" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            {{ n.name }}
+          </button>
+        </div>
+        <button type="button" class="btn native" *ngIf="canNative" (click)="share('native')">More options…</button>
+        <p class="toast" *ngIf="toast()" role="status">{{ toast() }}</p>
+      </div>
+      <div class="box" *ngIf="v.related.length">
+        <div class="lbl">Related stories</div>
+        <a *ngFor="let r of v.related" class="rel" [routerLink]="['/article', r.id]">{{ r.title }}<small>{{ r.date }}</small></a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Floating ask button (right side, pulsing) -->
+  <button type="button" class="dock" [class.hide]="askOpen()" (click)="openAsk()" aria-label="Ask AI about this story">
+    <span class="dock-label">Ask about this story</span>
+    <span class="dock-orb">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>
+    </span>
+  </button>
+
+  <!-- Fullscreen AI overlay -->
+  <div class="ai" *ngIf="askOpen()" role="dialog" aria-modal="true" aria-label="Ask about this story">
+    <div class="ai-bg" [style.background-image]="'url(' + v.img + ')'"></div>
+    <div class="ai-veil"></div>
+
+    <div class="ai-top">
+      <div class="ai-ctx">
+        <span class="ai-kicker">Asking about</span>
+        <span class="ai-title">{{ v.a.title }}</span>
+      </div>
+      <div class="ai-actions">
+        <button type="button" class="ghost" *ngIf="messages().length" (click)="reset()">New chat</button>
+        <button type="button" class="ghost close" (click)="closeAsk()" aria-label="Close">Esc ✕</button>
+      </div>
+    </div>
+
+    <div class="ai-body" #thread>
+      <div class="ai-empty" *ngIf="!messages().length">
+        <h2>What do you want to know?</h2>
+        <p>Answers are based on this story's brief from {{ v.a.source }}.</p>
+        <div class="big-chips">
+          <button type="button" *ngFor="let s of suggestions()" (click)="ask(s)">{{ s }}</button>
+        </div>
+      </div>
+
+      <div class="msg" *ngFor="let m of messages()" [class.user]="m.role === 'user'" [class.err]="m.error">
+        <div class="bubble">{{ m.text }}</div>
+      </div>
+
+      <div class="msg" *ngIf="loading()">
+        <div class="bubble typing"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+
+    <div class="ai-input">
+      <textarea #field rows="1" placeholder="Ask a follow-up…" aria-label="Your question"
+        (input)="grow(field)" (keydown.enter)="onEnter($event, field)"></textarea>
+      <button type="button" class="send" [disabled]="loading()" (click)="ask(field.value); field.value=''; grow(field)" aria-label="Send">↑</button>
+    </div>
+  </div>
+</ng-container>
+<ng-template #nf><div class="wrap"><h1>Article not found</h1><a routerLink="/">← Home</a></div></ng-template>

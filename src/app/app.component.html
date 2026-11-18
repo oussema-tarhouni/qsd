@@ -1,0 +1,448 @@
+
+
+<!-- NAVBAR -->
+<nav class="navbar" id="asouvaNav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <button class="nb-menu-btn" id="nbMenuBtn" title="Menu" aria-label="Menu">
+        <svg viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect class="bar1" x="0" y="0" width="20" height="2" rx="1" fill="currentColor"/>
+          <rect class="bar2" x="0" y="7" width="20" height="2" rx="1" fill="currentColor"/>
+          <rect class="bar3" x="0" y="14" width="20" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-logo">
+      <div class="nav-logo-mark">
+        <img class="logo-dark" src="/asouva_dark.svg" alt="Asouva" style="height:22px;width:auto"/>
+        <img class="logo-light" src="../assets/asouva_light.svg" alt="Asouva" style="height:22px;width:auto"/>
+      </div>
+    </a>
+
+    <div class="nb-right">
+      <button class="nb-signin" (click)="openLogin()">Sign in</button>
+      <button class="nb-subscribe" (click)="openPricing()">Subscribe</button>
+    </div>
+  </div>
+
+  <div class="nav-cats-bar">
+    <div class="nav-cats-inner">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+      <a routerLink="/latest" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Latest</a>
+      <a routerLink="/world" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">World</a>
+      <a routerLink="/technology" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Technology</a>
+      <a routerLink="/business" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Business</a>
+      <a routerLink="/politics" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Politics</a>
+      <a routerLink="/ai" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">AI</a>
+      <a routerLink="/markets" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Markets</a>
+      <a routerLink="/science" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Science</a>
+      <a href="#" id="nbMoreTrigger">More
+        <svg style="width:10px;height:10px;margin-left:3px;opacity:.5" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Mega menu -->
+<div class="nb-mega" id="nbMega">
+  <div class="nb-mega-inner">
+    <div><div class="nb-col-label">Society</div><ul class="nb-mega-links"><li><a routerLink="/health" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Health & Medicine</a></li><li><a routerLink="/sports" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Sports</a></li><li><a routerLink="/lifestyle" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Lifestyle</a></li></ul></div>
+    <div><div class="nb-col-label">Economy</div><ul class="nb-mega-links"><li><a routerLink="/global-markets" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Global Markets</a></li><li><a routerLink="/startups" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Startups <span class="nb-hot">Hot</span></a></li><li><a routerLink="/crypto" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Crypto</a></li></ul></div>
+    <div><div class="nb-col-label">Science & Planet</div><ul class="nb-mega-links"><li><a routerLink="/climate" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Climate Crisis</a></li><li><a routerLink="/space" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Space</a></li><li><a routerLink="/environment" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Environment</a></li><li><a routerLink="/research" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Research</a></li><li><a routerLink="/biodiversity" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Biodiversity</a></li></ul></div>
+    <div><div class="nb-col-label">Digital</div><ul class="nb-mega-links"><li><a routerLink="/cybersecurity" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Cybersecurity <span class="nb-hot">Live</span></a></li><li><a routerLink="/privacy" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Privacy</a></li><li><a routerLink="/social-media" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Social Media</a></li><li><a routerLink="/big-tech" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Big Tech</a></li></ul></div>
+    <div><div class="nb-col-label">Regions</div><ul class="nb-mega-links"><li><a routerLink="/middle-east" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Middle East</a></li><li><a routerLink="/africa" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Africa</a></li><li><a routerLink="/asia-pacific" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Asia Pacific</a></li><li><a routerLink="/north-america" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">North America</a></li><li><a routerLink="/europe" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Europe</a></li></ul></div>
+  </div>
+</div>
+
+<div class="nb-backdrop" id="nbBackdrop"></div>
+
+<!-- MENU DRAWER -->
+<div class="nb-drawer" id="nbDrawer">
+  <div class="nb-drawer-header">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="nav-logo">
+      <div class="nav-logo-mark">
+        <img class="logo-dark" src="/asouva_dark.svg" alt="Asouva" style="height:18px;width:auto"/>
+        <img class="logo-light" src="/assets/asouva_light.svg" alt="Asouva" style="height:18px;width:auto"/>
+      </div>
+    </a>
+    <button class="nb-drawer-close" id="nbDrawerClose">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5L5 15M5 5l10 10"/></svg>
+    </button>
+  </div>
+  <div class="nb-drawer-search">
+    <div class="nb-drawer-search-box">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M15 15l-3-3" stroke-linecap="round"/></svg>
+      <input class="nb-drawer-search-input" placeholder="Search news, topics, countries…" autocomplete="off"/>
+    </div>
+  </div>
+  <div class="nb-drawer-links">
+    <div class="nb-drawer-section">Navigation</div>
+    <a routerLink="/" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+    <a routerLink="/latest" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Latest News</a>
+    <a routerLink="/world" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">World</a>
+    <a routerLink="/technology" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Technology</a>
+    <a routerLink="/business" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Business</a>
+    <a routerLink="/politics" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Politics</a>
+    <a routerLink="/ai" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">AI</a>
+    <a routerLink="/markets" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Markets</a>
+    <a routerLink="/science" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Science</a>
+    <div class="nb-drawer-section">More Topics</div>
+    <a routerLink="/health" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Health & Medicine</a>
+    <a routerLink="/climate" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Climate Crisis</a>
+    <a routerLink="/space" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Space</a>
+    <a routerLink="/cybersecurity" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Cybersecurity</a>
+    <a routerLink="/startups" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Startups</a>
+    <a routerLink="/sports" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Sports</a>
+    <div class="nb-drawer-section">Regions</div>
+    <a routerLink="/middle-east" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Middle East</a>
+    <a routerLink="/africa" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Africa</a>
+    <a routerLink="/asia-pacific" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Asia Pacific</a>
+    <a routerLink="/north-america" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">North America</a>
+    <a routerLink="/europe" (click)="closeMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Europe</a>
+  </div>
+</div>
+
+<div class="main-area" id="mainArea">
+
+<!-- YouTube Card -->
+<div class="yt-card" id="ytCard">
+  <iframe id="ytFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<!-- FLOATING PLAYER -->
+<div class="player">
+  <div class="on-air">
+    <div class="bars">
+      <div class="bar"></div><div class="bar"></div>
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+    <span class="on-air-label">ON AIR</span>
+  </div>
+  <div class="divider"></div>
+  <div class="controls">
+    <button class="btn btn-share" id="shareBtn" title="Share">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+        <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+      </svg>
+    </button>
+    <button class="btn btn-theme" id="themeBtn" title="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 20 20" fill="currentColor" width="17" height="17"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 20 20" fill="currentColor" width="17" height="17"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/></svg>
+    </button>
+    <div class="live-tag">
+      <span class="live-dot"></span>
+      Live broadcast
+      <svg class="live-cam" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3.5" width="10" height="9" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2"/></svg>
+    </div>
+    <button class="play-btn" title="Play / Pause">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M4 2.5l10 5.5-10 5.5z"/></svg>
+    </button>
+  </div>
+
+  <div class="urgent">
+    <div class="urgent-badge">
+      <span class="urgent-dot"></span>
+      <span class="urgent-label">Urgent</span>
+    </div>
+    <div class="urgent-content" id="urgentContent">
+      <span class="urgent-item active">Russia launches large-scale missile strikes on Kyiv — civilian areas hit</span>
+      <span class="urgent-item">UN Security Council calls emergency session over Gaza ceasefire collapse</span>
+      <span class="urgent-item">7.4 magnitude earthquake strikes off coast of Japan — tsunami warning issued</span>
+      <span class="urgent-item">Iran launches new wave of Sejjil strategic missile strikes against Israel</span>
+      <span class="urgent-item">Trump threatens military action if Hormuz Strait is blockaded</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="player-chat-btn-wrap">
+    <button class="chat-toggle-btn" id="chatToggleBtn" title="Asouva AI">
+      <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a4 4 0 014 4v1a4 4 0 010 8v1a4 4 0 01-8 0v-1a4 4 0 010-8V6a4 4 0 014-4z"/>
+        <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/>
+        <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>
+        <path d="M9 14s1 1.5 3 1.5 3-1.5 3-1.5"/>
+      </svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+</div>
+
+<!-- CHAT DRAWER -->
+<div class="chat-drawer" id="chatDrawer">
+  <div class="chat-login-overlay" id="chatLoginOverlay">
+    <div style="text-align:center;margin-bottom:20px">
+      <img class="logo-dark" src="/asouva_dark.svg" alt="Asouva" style="height:22px;width:auto;display:none"/>
+      <img class="logo-light" src="/assets/asouva_light.svg" alt="Asouva" style="height:22px;width:auto;display:none"/>
+    </div>
+    <h2 style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;text-align:center">Sign in to Asouva</h2>
+    <p style="font-size:13px;color:var(--muted);text-align:center;line-height:1.5;margin-bottom:24px">Access AI-powered news analysis.</p>
+    <div class="login-providers" style="width:100%;max-width:280px">
+      <button class="login-provider-btn" onclick="loginWith('google')">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Continue with Google
+      </button>
+      <button class="login-provider-btn" onclick="loginWith('apple')">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        Continue with Apple
+      </button>
+    </div>
+    <button class="login-cancel-btn" id="loginCancel" style="max-width:280px;margin-top:12px">Cancel</button>
+  </div>
+
+  <div class="split-chat-header">
+    <div class="split-avatar">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg>
+    </div>
+    <div class="split-agent-info">
+      <div class="split-agent-name">Asouva AI</div>
+      <div class="split-agent-status"><span class="split-status-dot"></span><span>Online · AI powered</span></div>
+    </div>
+    <button class="split-close" id="drawerClose" title="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="split-messages" id="chatMessages">
+    <div class="msg agent">
+      <div class="msg-bubble">Hi! I'm Asouva AI. Ask me anything about today's news or any topic you'd like to explore.</div>
+      <span class="msg-time">Now</span>
+    </div>
+    <div class="typing-bubble" id="typingBubble">
+      <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+    </div>
+  </div>
+
+  <div class="split-footer">
+    <div class="context-pill">
+      <div class="context-pill-dot"></div>
+      <span id="agentContext">Asking about the news</span>
+    </div>
+    <div class="chat-box">
+      <textarea class="chat-input" id="chatInput" placeholder="Ask anything about the news…" rows="1"></textarea>
+      <div class="chat-box-bar">
+        <div class="model-pills">
+          <button class="model-pill active" data-model="claude">Claude</button>
+          <button class="model-pill" data-model="chatgpt">ChatGPT</button>
+          <button class="model-pill" data-model="gemini">Gemini</button>
+          <button class="model-pill" data-model="deepseek">DeepSeek</button>
+        </div>
+        <div class="chat-box-actions">
+          <button class="mic-btn" id="micBtn" title="Voice input">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0014 0M12 19v3M8 22h8"/></svg>
+          </button>
+          <button class="chat-send" id="chatSend" title="Send">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img class="logo-dark" src="/asouva_dark.svg" alt="Asouva" style="height:22px;width:auto"/>
+        <img class="logo-light" src="/assets/asouva_light.svg" alt="Asouva" style="height:22px;width:auto"/>
+      </div>
+      <p class="footer-intro">Asouva is a next-generation global media platform built for speed, intelligence, and credibility. We deliver world-class journalism from every corner of the planet — in real time, with context.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" title="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" class="social-btn" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" class="social-btn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" class="social-btn" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div>
+        <div class="footer-col-label">Coverage</div>
+        <ul class="footer-col-links">
+          <li><a routerLink="/world">World</a></li>
+          <li><a routerLink="/business">Business</a></li>
+          <li><a routerLink="/technology">Technology</a></li>
+          <li><a routerLink="/politics">Politics</a></li>
+          <li><a routerLink="/science">Science</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-col-links">
+          <li><a routerLink="/about">About Asouva</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-col-links">
+          <li><a routerLink="/newsletter">Newsletter</a></li>
+          <li><a routerLink="/mobile-app">Mobile App</a></li>
+          <li><a routerLink="/">Asouva</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-label">Support</div>
+        <ul class="footer-col-links">
+          <li><a routerLink="/subscribe">Subscribe</a></li>
+          <li><a routerLink="/advertise">Advertise</a></li>
+          <li><a routerLink="/contact">Contact Us</a></li>
+          <li><a routerLink="/privacy">Privacy Policy</a></li>
+          <li><a routerLink="/terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Asouva Media Group. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a routerLink="/privacy">Privacy</a>
+      <a routerLink="/terms">Terms</a>
+      <a href="#">Cookies</a>
+      <a href="#">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<!-- PAGE LOGIN MODAL (single column: Sign in / Create account) -->
+<div class="page-login-backdrop" id="pageLoginBackdrop" [class.show]="loginOpen()" (click)="onBackdrop($event, 'login')">
+  <div class="page-login-card" id="authCard" role="dialog" aria-modal="true" aria-label="Sign in or create an account">
+    <button class="page-login-close" type="button" (click)="closeLogin()" aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5L5 15M5 5l10 10"/></svg></button>
+
+    <!-- VIEW 1: SIGN IN -->
+    <div id="viewSignIn" [style.display]="authView() === 'signin' ? '' : 'none'">
+      <div class="login-wide-layout login-stack">
+        <div class="login-wide-left">
+          <div class="login-logo">
+            <img class="logo-dark" src="/asouva_dark.svg" alt="Asouva" style="height:24px;width:auto"/>
+            <img class="logo-light" src="/assets/asouva_light.svg" alt="Asouva" style="height:24px;width:auto"/>
+          </div>
+          <h2 class="login-title">Welcome back</h2>
+          <p class="login-sub">Sign in to access AI-powered news analysis, save articles, and personalise your feed.</p>
+          <div class="login-providers" style="width:100%">
+            <button class="login-provider-btn" type="button" (click)="loginWith('google')"><svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Continue with Google</button>
+            <button class="login-provider-btn" type="button" (click)="loginWith('apple')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>Continue with Apple</button>
+            <button class="login-provider-btn" type="button" (click)="loginWith('facebook')"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Continue with Facebook</button>
+          </div>
+        </div>
+
+        <div class="login-wide-right">
+          <div class="login-divider" style="margin-top:0">or sign in with email</div>
+          <div class="auth-field-group">
+            <div class="auth-field">
+              <label class="auth-label" for="signinEmail">Email</label>
+              <input class="auth-input" id="signinEmail" type="email" placeholder="you&#64;example.com" autocomplete="email"/>
+            </div>
+            <div class="auth-field">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <label class="auth-label" for="signinPassword">Password</label>
+                <a href="#" class="auth-forgot" (click)="$event.preventDefault()">Forgot password?</a>
+              </div>
+              <div class="auth-input-wrap">
+                <input class="auth-input" id="signinPassword" [type]="showPwdIn() ? 'text' : 'password'" placeholder="••••••••" autocomplete="current-password"/>
+                <button class="auth-eye" type="button" (click)="showPwdIn.set(!showPwdIn())" aria-label="Show or hide password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <button class="login-register-btn" type="button" (click)="loginWith('email')">Sign in</button>
+        </div>
+      </div>
+      <p class="login-switch">Don't have an account?
+        <a href="#" (click)="$event.preventDefault(); showRegister()">Create one</a></p>
+    </div>
+
+    <!-- VIEW 2: CREATE ACCOUNT -->
+    <div id="viewRegister" [style.display]="authView() === 'register' ? '' : 'none'">
+      <div class="login-wide-layout login-stack">
+        <div class="login-wide-left">
+          <h2 class="login-title">Create your account</h2>
+          <p class="login-sub">Join Asouva — it's free to get started.</p>
+          <div class="login-providers" style="width:100%">
+            <button class="login-provider-btn" type="button" (click)="loginWith('google')"><svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Sign up with Google</button>
+            <button class="login-provider-btn" type="button" (click)="loginWith('apple')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>Sign up with Apple</button>
+          </div>
+        </div>
+        <div class="login-wide-right">
+          <div class="login-divider" style="margin-top:0">or create with email</div>
+          <div class="auth-field-group">
+            <div class="auth-fields-row">
+              <div class="auth-field"><label class="auth-label" for="regFirst">First name</label><input class="auth-input" id="regFirst" type="text" placeholder="John" autocomplete="given-name"/></div>
+              <div class="auth-field"><label class="auth-label" for="regLast">Last name</label><input class="auth-input" id="regLast" type="text" placeholder="Doe" autocomplete="family-name"/></div>
+            </div>
+            <div class="auth-field"><label class="auth-label" for="regEmail">Email</label><input class="auth-input" id="regEmail" type="email" placeholder="you&#64;example.com" autocomplete="email"/></div>
+            <div class="auth-field">
+              <label class="auth-label" for="regPassword">Password</label>
+              <div class="auth-input-wrap">
+                <input class="auth-input" id="regPassword" [type]="showPwdReg() ? 'text' : 'password'" placeholder="Min. 8 characters" autocomplete="new-password"/>
+                <button class="auth-eye" type="button" (click)="showPwdReg.set(!showPwdReg())" aria-label="Show or hide password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <button class="login-register-btn" type="button" (click)="loginWith('register')">Create account</button>
+          <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:8px;line-height:1.5">By creating an account you agree to our <a routerLink="/terms" (click)="closeLogin()" style="color:var(--accent)">Terms</a> and <a routerLink="/privacy" (click)="closeLogin()" style="color:var(--accent)">Privacy Policy</a>.</p>
+        </div>
+      </div>
+      <p class="login-switch">Already have an account?
+        <a href="#" (click)="$event.preventDefault(); showSignIn()">Sign in</a></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- PRICING MODAL -->
+<div class="page-login-backdrop" id="pricingBackdrop" [class.show]="pricingOpen()" (click)="onBackdrop($event, 'pricing')">
+  <div class="pricing-card">
+    <button class="page-login-close" (click)="closePricing()">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5L5 15M5 5l10 10"/></svg>
+    </button>
+    <div class="pricing-header">
+      <div class="pricing-badge">Choose your plan</div>
+      <h2 class="pricing-title">Unlock the full Asouva experience</h2>
+      <p class="pricing-sub">Real-time news and AI analysis — all in one place.</p>
+    </div>
+    <div class="pricing-plans">
+      <div class="plan-card">
+        <div class="plan-top"><div class="plan-name">Free</div><div class="plan-price"><span class="plan-amount">$0</span><span class="plan-period">/mo</span></div><div class="plan-desc">Get started with no card needed.</div></div>
+        <ul class="plan-features">
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>Access to breaking news</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>5 AI chat queries / day</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>Basic personalised feed</li>
+          <li class="plan-feat-off"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>Unlimited AI queries</li>
+        </ul>
+        <button class="plan-btn plan-btn-ghost" (click)="closePricing()">Continue free</button>
+      </div>
+      <div class="plan-card plan-featured">
+        <div class="plan-popular-badge">Most Popular</div>
+        <div class="plan-top"><div class="plan-name">Pro</div><div class="plan-price"><span class="plan-amount">$9</span><span class="plan-period">/mo</span></div><div class="plan-desc">Everything you need to stay informed.</div></div>
+        <ul class="plan-features">
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>Everything in Free</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>Unlimited AI chat queries</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>Save & bookmark articles</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>Ad-free reading</li>
+        </ul>
+        <button class="plan-btn plan-btn-primary" (click)="openLogin()">Get Pro</button>
+      </div>
+      <div class="plan-card">
+        <div class="plan-top"><div class="plan-name">Enterprise</div><div class="plan-price"><span class="plan-amount">Custom</span></div><div class="plan-desc">For teams and organisations.</div></div>
+        <ul class="plan-features">
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>Everything in Pro</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>Team seats & workspaces</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>API & data export</li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8l3.5 3.5L13 4"/></svg>Dedicated account manager</li>
+        </ul>
+        <button class="plan-btn plan-btn-ghost">Contact sales</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

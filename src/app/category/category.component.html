@@ -1,0 +1,35 @@
+<main class="page-content" *ngIf="cat() as c">
+  <section class="cat-head">
+    <div class="section-label">{{ c.title }}</div>
+    <h1>{{ c.title }}</h1>
+    <p>{{ c.desc }}</p>
+  </section>
+
+  <section *ngIf="c.info" class="info">
+    <p *ngFor="let p of c.paragraphs">{{ p }}</p>
+    <a routerLink="/">← Back to home</a>
+  </section>
+
+  <ng-container *ngIf="!c.info && c.lead">
+    <p *ngIf="c.sample" class="notice">Sample content: live reporting for this category is not connected yet.</p>
+    <a class="lead" [routerLink]="c.lead.link" [class.nolink]="!c.lead.link">
+      <img [src]="c.lead.img" [alt]="c.lead.title" />
+      <div class="lead-overlay"></div>
+      <div class="lead-body">
+        <span class="tag">{{ c.lead.topic }}</span>
+        <h2>{{ c.lead.title }}</h2>
+        <small>{{ c.lead.date }}</small>
+      </div>
+    </a>
+    <div class="grid">
+      <a class="card" *ngFor="let a of c.articles" [routerLink]="a.link" [class.nolink]="!a.link">
+        <div class="thumb"><img [src]="a.img" [alt]="a.title" loading="lazy" /></div>
+        <div class="body">
+          <span class="tag">{{ a.topic }}</span>
+          <h3>{{ a.title }}</h3>
+          <small>{{ a.date }}</small>
+        </div>
+      </a>
+    </div>
+  </ng-container>
+</main>
